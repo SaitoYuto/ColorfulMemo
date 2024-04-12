@@ -1,7 +1,19 @@
 # Colorful Memo
 
-This is simple single page application, storing memo.
-You can select theme mode and color in a Setting page.
+![Light & Blue](./README/images/Light&Blue.png)
+
+---
+
+![Dark & Yellow](./README/images/Dark&Yellow.png)
+
+---
+
+![Light & Green](./README/images/Light&Green.png)
+
+## Description
+
+The Colorful Memo is a simple single page application, using local storage for storing memos.  
+This application allows users to select theme mode and color.
 
 ## Theme
 
@@ -14,6 +26,13 @@ You can select theme mode and color in a Setting page.
 - Red
 - Yellow
 - Green
+
+## Developed with
+
+- [Vue3](https://github.com/vuejs)
+- [Vuetify](https://github.com/vuetifyjs/vuetify)
+- [Pinia](https://github.com/vuejs/pinia)
+- [TypeScript](https://github.com/microsoft/TypeScript)
 
 ## Project setup
 
@@ -32,3 +51,11 @@ npm run build
 ```
 npm run dev
 ```
+
+## TODO
+
+- Add TODO feature
+- Add search feature
+- Add tag feature
+- Add filter feature
+- Add grouping feature

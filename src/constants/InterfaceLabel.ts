@@ -25,5 +25,6 @@ export const INTERFACE_LABEL = {
   SELECT: {
     COLOR: "Theme Color",
     MODE: "Theme Mode",
+    BUTTON: "Button Variant",
   } as const,
 } as const;

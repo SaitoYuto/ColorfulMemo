@@ -2,7 +2,7 @@
   <v-main>
     <v-label :text="INTERFACE_LABEL.PAGES.ADD" />
     <v-divider :color="colorAttr.COLOR_TYPE" :thickness="3" />
-    <MemoForm :colorAttr="colorAttr" />
+    <MemoForm :colorAttr="colorAttr" :buttonVariant="variant" />
   </v-main>
 </template>
 
@@ -10,5 +10,7 @@
 import { INTERFACE_LABEL } from "@/constants/InterfaceLabel";
 import { setting } from "@/stores/setting";
 
-const colorAttr = setting().getThemeColorConst;
+const settingStore = setting();
+const colorAttr = settingStore.getThemeColorConst;
+const variant = settingStore.getButtonVariantConst;
 </script>

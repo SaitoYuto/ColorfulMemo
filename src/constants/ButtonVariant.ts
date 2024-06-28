@@ -5,5 +5,4 @@ export const BUTTON_VARIANT = {
   ELEVATED: "elevated",
   OUTLINED: "outlined",
   PLAIN: "plain",
-  UNDEFINED: undefined,
 } as const;

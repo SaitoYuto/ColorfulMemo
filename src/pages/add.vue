@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-label :text="INTERFACE_LABEL.PAGES.ADD" />
-    <v-divider :color="colorAttr.COLOR_TYPE" :thickness="3" />
+    <v-divider :color="colorAttr.DIVIDER" :thickness="3" />
     <MemoForm :colorAttr="colorAttr" :buttonVariant="variant" />
   </v-main>
 </template>

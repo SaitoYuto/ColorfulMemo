@@ -2,23 +2,23 @@
   <v-main>
     <v-container>
       <v-label :text="INTERFACE_LABEL.PAGES.SETTING" />
-      <v-divider :color="colorAttr.COLOR_TYPE" :thickness="3" />
+      <v-divider :color="colorAttr.DIVIDER" :thickness="3" />
       <v-container>
         <BaseSelect
           :label="INTERFACE_LABEL.SELECT.MODE"
-          :bgColor="colorAttr.BG_COLOR"
+          :bgColor="colorAttr.SELECT"
           :items="modes"
           v-model:select="selectedModePair"
         ></BaseSelect>
         <BaseSelect
           :label="INTERFACE_LABEL.SELECT.COLOR"
-          :bgColor="colorAttr.BG_COLOR"
+          :bgColor="colorAttr.SELECT"
           :items="colors"
           v-model:select="selectedColorPair"
         ></BaseSelect>
         <BaseSelect
           :label="INTERFACE_LABEL.SELECT.BUTTON"
-          :bgColor="colorAttr.BG_COLOR"
+          :bgColor="colorAttr.SELECT"
           :items="variants"
           v-model:select="selectedVariantPair"
         ></BaseSelect>
@@ -26,7 +26,7 @@
       <v-container class="d-flex justify-space-evenly mx-16">
         <BaseButton
           :text="INTERFACE_LABEL.BUTTON.SAVE"
-          :color="colorAttr.COLOR"
+          :color="colorAttr.BUTTON"
           :variant="variant"
           @click="save"
         />
@@ -41,8 +41,12 @@ import { BUTTON_VARIANT_PAIR } from "@/constants/ButtonVariantPair";
 import { THEME_MODE_PAIR } from "@/constants/ThemeModePair";
 import { THEME_COLOR_PAIR } from "@/constants/ThemeColorPair";
 import { setting } from "@/stores/setting";
+import { ButtonVariant } from "@/types/ButtonVariant";
+import { useTheme } from "vuetify";
+
 const settingStore = setting();
 const router = useRouter();
+const theme = useTheme();
 const modes = THEME_MODE_PAIR.getList();
 const colors = THEME_COLOR_PAIR.getList();
 const variants = BUTTON_VARIANT_PAIR.getList();
@@ -55,8 +59,8 @@ const selectedColorPair = ref(
 const selectedVariantPair = ref(
   BUTTON_VARIANT_PAIR.get(settingStore.getButtonVariantCode)
 );
-const colorAttr = settingStore.getThemeColorConst;
-const variant = settingStore.getButtonVariantConst;
+const colorAttr = ref(settingStore.getThemeColorConst);
+const variant = ref(settingStore.getButtonVariantConst);
 
 /**
  * save selected value to store
@@ -73,4 +77,33 @@ function save(): void {
   }
   router.go(0);
 }
+
+/**
+ * monitor theme mode choice and modify the button style
+ */
+watch(selectedModePair, (newVal) => {
+  if (newVal?.text != undefined) {
+    theme.global.name.value = newVal.text.toLowerCase();
+  }
+});
+/**
+ * monitor theme mode choice and modify the button style
+ */
+watch(selectedColorPair, (newVal) => {
+  if (newVal?.code != undefined) {
+    settingStore.setThemeColor(newVal.code);
+    colorAttr.value = settingStore.getThemeColorConst;
+  }
+});
+
+/**
+ * monitor button variant choice and modify the button style
+ */
+watch(selectedVariantPair, (newVal, oldVal) => {
+  if (newVal?.text != undefined) {
+    variant.value = newVal?.text as ButtonVariant;
+  } else {
+    variant.value = oldVal?.text as ButtonVariant;
+  }
+});
 </script>

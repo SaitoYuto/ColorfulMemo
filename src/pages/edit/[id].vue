@@ -1,8 +1,12 @@
 <template>
   <v-main>
     <v-label :text="INTERFACE_LABEL.PAGES.EDIT" />
-    <v-divider :color="colorAttr.COLOR_TYPE" :thickness="3" />
-    <MemoForm :id="id" :colorAttr="colorAttr"></MemoForm>
+    <v-divider :color="colorAttr.DIVIDER" :thickness="3" />
+    <MemoForm
+      :id="id"
+      :colorAttr="colorAttr"
+      :buttonVariant="variant"
+    ></MemoForm>
   </v-main>
 </template>
 
@@ -12,4 +16,5 @@ import { setting } from "@/stores/setting";
 
 const id = useRoute("/edit/[id]").params.id;
 const colorAttr = setting().getThemeColorConst;
+const variant = setting().getButtonVariantConst;
 </script>

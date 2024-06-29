@@ -2,40 +2,40 @@
   <v-form ref="memoForm">
     <v-container>
       <RequiredTextField
-        :bgColor="colorAttr.BG_COLOR"
+        :bgColor="colorAttr.TEXT_FIELD"
         :label="INTERFACE_LABEL.INPUT.MEMO_TITLE"
         v-model:input="titleInput"
       />
       <RequiredTextArea
-        :bgColor="colorAttr.BG_COLOR"
+        :bgColor="colorAttr.TEXT_AREA"
         :label="INTERFACE_LABEL.INPUT.MEMO_CONTENT"
         v-model:input="contentInput"
       />
     </v-container>
     <v-container class="d-flex justify-space-evenly mx-16">
       <BaseButton
-        :color="colorAttr.COLOR"
+        :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.SAVE"
         :variant="buttonVariant"
         :isShow="!isEdit()"
         @click="save"
       />
       <BaseButton
-        :color="colorAttr.COLOR"
+        :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.UPDATE"
         :variant="buttonVariant"
         :isShow="isEdit()"
         @click="update"
       />
       <BaseButton
-        :color="colorAttr.COLOR"
+        :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.DELETE"
         :variant="buttonVariant"
         :isShow="isEdit()"
         @click="remove"
       />
       <BaseButton
-        :color="colorAttr.COLOR"
+        :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.CANCEL"
         :variant="buttonVariant"
         @click="forwardHome"

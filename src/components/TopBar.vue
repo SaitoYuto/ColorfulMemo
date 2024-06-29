@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar :color="colorAttr.COLOR">
+  <v-app-bar :color="colorAttr.BAR">
     <v-app-bar-title text="Colorful Memo" />
   </v-app-bar>
 </template>

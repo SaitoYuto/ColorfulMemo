@@ -1,4 +1,4 @@
-export const THEME_COLOR = {
+export const THEME_COLOR_CODE = {
   BLUE: 1,
   RED: 2,
   YELLOW: 3,

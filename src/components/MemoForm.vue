@@ -1,52 +1,55 @@
 <template>
-  <v-container>
-    <RequiredTextField
-      :bgColor="$props.colorAttr.BG_COLOR"
-      :label="INTERFACE_LABEL.INPUT.MEMO_TITLE"
-      v-model:input="titleInput"
-    />
-    <RequiredTextArea
-      :bgColor="$props.colorAttr.BG_COLOR"
-      :label="INTERFACE_LABEL.INPUT.MEMO_CONTENT"
-      v-model:input="contentInput"
-    />
-  </v-container>
-  <BaseDialog
-    :text="MESSAGE.DIALOG.REQUIRED"
-    v-model:isVisibleDialog="isVisibleDialog"
-  ></BaseDialog>
-  <v-container class="d-flex justify-space-evenly mx-16">
-    <BaseButton
-      :color="$props.colorAttr.COLOR"
-      :text="INTERFACE_LABEL.BUTTON.SAVE"
-      :isShow="!isEdit()"
-      @click="save"
-    />
-    <BaseButton
-      :color="$props.colorAttr.COLOR"
-      :text="INTERFACE_LABEL.BUTTON.UPDATE"
-      :isShow="isEdit()"
-      @click="update"
-    />
-    <BaseButton
-      :color="$props.colorAttr.COLOR"
-      :text="INTERFACE_LABEL.BUTTON.DELETE"
-      :isShow="isEdit()"
-      @click="remove"
-    />
-    <BaseButton
-      :color="$props.colorAttr.COLOR"
-      :text="INTERFACE_LABEL.BUTTON.CANCEL"
-      @click="forwardHome"
-    />
-  </v-container>
+  <v-form ref="memoForm">
+    <v-container>
+      <RequiredTextField
+        :bgColor="colorAttr.TEXT_FIELD"
+        :label="INTERFACE_LABEL.INPUT.MEMO_TITLE"
+        v-model:input="titleInput"
+      />
+      <RequiredTextArea
+        :bgColor="colorAttr.TEXT_AREA"
+        :label="INTERFACE_LABEL.INPUT.MEMO_CONTENT"
+        v-model:input="contentInput"
+      />
+    </v-container>
+    <v-container class="d-flex justify-space-evenly mx-16">
+      <BaseButton
+        :color="colorAttr.BUTTON"
+        :text="INTERFACE_LABEL.BUTTON.SAVE"
+        :variant="buttonVariant"
+        :isShow="!isEdit()"
+        @click="save"
+      />
+      <BaseButton
+        :color="colorAttr.BUTTON"
+        :text="INTERFACE_LABEL.BUTTON.UPDATE"
+        :variant="buttonVariant"
+        :isShow="isEdit()"
+        @click="update"
+      />
+      <BaseButton
+        :color="colorAttr.BUTTON"
+        :text="INTERFACE_LABEL.BUTTON.DELETE"
+        :variant="buttonVariant"
+        :isShow="isEdit()"
+        @click="remove"
+      />
+      <BaseButton
+        :color="colorAttr.BUTTON"
+        :text="INTERFACE_LABEL.BUTTON.CANCEL"
+        :variant="buttonVariant"
+        @click="forwardHome"
+      />
+    </v-container>
+  </v-form>
 </template>
 
 <script lang="ts" setup>
+import moment from "moment";
 import { INTERFACE_LABEL } from "@/constants/InterfaceLabel";
-import { MESSAGE } from "@/constants/Message";
 import { memo } from "@/stores/memo";
 import type { Memo } from "@/types/Memo";
+import { ButtonVariant } from "@/types/ButtonVariant";
 
 const props = defineProps({
   id: {
@@ -58,12 +61,16 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  buttonVariant: {
+    type: String as PropType<ButtonVariant>,
+    required: true,
+  },
 });
 
 const router = useRouter();
+const memoForm = ref();
 const memoStore = memo();
 const foundMemo = memoStore.findById(props.id.valueOf());
-let isVisibleDialog = ref(false);
 
 const titleInput = ref(foundMemo && foundMemo.title ? foundMemo.title : "");
 const contentInput = ref(
@@ -93,15 +100,6 @@ function stringifyCurrentDate(): string {
 }
 
 /**
- * toggle dialog
- *
- * @returns {void}
- */
-function toggleDialog(): void {
-  isVisibleDialog.value = !isVisibleDialog.value;
-}
-
-/**
  * create Memo type data
  *
  * @returns {Memo}
@@ -111,29 +109,18 @@ function formMemo(): Memo {
     id: stringifyCurrentDate(),
     title: titleInput.value,
     content: contentInput.value,
-    dateTime:
-      new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString(),
+    dateTime: moment().format("YYYY/MM/DD HH:mm"),
   };
-}
-
-/**
- * check if both title and content are input
- *
- * @returns {boolean}
- */
-function validate(): boolean {
-  return !titleInput.value.length || !contentInput.value.length;
 }
 
 /**
  * save to store
  *
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function save(): void {
-  if (validate()) {
-    // open dialog
-    toggleDialog();
+async function save(): Promise<void> {
+  const validResult = await memoForm.value.validate();
+  if (!validResult.valid) {
     return;
   }
   memoStore.add(formMemo());
@@ -143,11 +130,11 @@ function save(): void {
 /**
  * update to store data
  *
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function update(): void {
-  if (validate()) {
-    toggleDialog();
+async function update(): Promise<void> {
+  const validResult = await memoForm.value.validate();
+  if (!validResult.valid) {
     return;
   }
   memoStore.updateById(props.id, titleInput.value, contentInput.value);

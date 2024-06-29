@@ -1,17 +1,17 @@
 <template>
   <v-alert
     closable
-    :text="props.text"
-    :color="props.color"
-    :icon="props.icon"
-    :variant="props.variant"
+    :text="text"
+    :color="color"
+    :icon="icon"
+    :variant="variant"
   ></v-alert>
 </template>
 
 <script lang="ts" setup>
 import { ALERT_VARIANT } from "@/constants/AlertVariant";
 import type { AlertVariant } from "@/types/AlertVariant";
-const props = defineProps({
+defineProps({
   text: {
     type: String,
     required: true,

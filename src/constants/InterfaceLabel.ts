@@ -17,13 +17,14 @@ export const INTERFACE_LABEL = {
     MEMO_TITLE: "*Title",
   } as const,
   PAGES: {
-    ADD: "New Memo",
-    EDIT: "Edit Memo",
+    ADD: "New",
+    EDIT: "Edit",
     HOME: "Home",
     SETTING: "Setting",
   } as const,
   SELECT: {
     COLOR: "Theme Color",
     MODE: "Theme Mode",
+    BUTTON: "Button Variant",
   } as const,
 } as const;

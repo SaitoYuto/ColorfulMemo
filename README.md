@@ -1,5 +1,9 @@
 # Colorful Memo
 
+![Colorful Memo](./README/images/logo.png)
+
+---
+
 ![Light & Blue](./README/images/Light&Blue.png)
 
 ---
@@ -13,7 +17,7 @@
 ## Description
 
 The Colorful Memo is a simple single page application, using local storage for storing memos.  
-This application allows users to select theme mode and color.
+This application allows users to select theme mode, color and component design.
 
 ## Theme
 
@@ -51,11 +55,3 @@ npm run build
 ```
 npm run dev
 ```
-
-## TODO
-
-- Add TODO feature
-- Add search feature
-- Add tag feature
-- Add filter feature
-- Add grouping feature

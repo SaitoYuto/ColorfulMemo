@@ -1,11 +1,11 @@
 import { CodeText } from "@/classes/CodeText";
-import { THEME_MODE } from "@/constants/ThemeMode";
-import { ThemeMode } from "@/types/ThemeMode";
+import { THEME_MODE_CODE } from "@/constants/ThemeModeCode";
+import { ThemeModeCode } from "@/types/ThemeModeCode";
 
-export const THEME_MODE_PAIR: CodeText<ThemeMode> =
-  new (class extends CodeText<ThemeMode> {
+export const THEME_MODE_PAIR: CodeText<ThemeModeCode> =
+  new (class extends CodeText<ThemeModeCode> {
     protected setup(): void {
-      this.append(THEME_MODE.LIGHT, "Light");
-      this.append(THEME_MODE.DARK, "Dark");
+      this.append(THEME_MODE_CODE.LIGHT, "Light");
+      this.append(THEME_MODE_CODE.DARK, "Dark");
     }
   })();

@@ -1,4 +1,15 @@
 export const COLOR_ATTR = {
+  DEFAULT: {
+    ALERT: "#757575",
+    BAR: "#9E9E9E",
+    BUTTON: "#9E9E9E",
+    DIVIDER: "#757575",
+    ICON: "#9E9E9E",
+    LIST: "#757575",
+    TEXT_FIELD: "#F5F5F5",
+    TEXT_AREA: "#F5F5F5",
+    SELECT: "#F5F5F5",
+  } as const,
   BLUE: {
     ALERT: "rgb(33, 150, 243)",
     BAR: "#2196F3",
@@ -42,16 +53,5 @@ export const COLOR_ATTR = {
     TEXT_FIELD: "#C8E6C9",
     TEXT_AREA: "#C8E6C9",
     SELECT: "#C8E6C9",
-  } as const,
-  DEFAULT: {
-    ALERT: "#212121",
-    BAR: "#9E9E9E",
-    BUTTON: "#9E9E9E",
-    DIVIDER: "#212121",
-    ICON: "#9E9E9E",
-    LIST: "#212121",
-    TEXT_FIELD: "#F5F5F5",
-    TEXT_AREA: "#F5F5F5",
-    SELECT: "#F5F5F5",
   } as const,
 } as const;

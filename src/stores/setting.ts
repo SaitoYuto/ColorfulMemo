@@ -12,7 +12,7 @@ export const setting = defineStore("setting", {
   state: () => {
     return {
       themeModeCode: THEME_MODE_CODE.LIGHT as ThemeModeCode,
-      themeColorCode: THEME_COLOR_CODE.BLUE as ThemeColorCode,
+      themeColorCode: THEME_COLOR_CODE.DEFAULT as ThemeColorCode,
       buttonVariantCode: BUTTON_VARIANT_CODE.TONAL as ButtonVariantCode,
     };
   },

@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     BaseAlert: typeof import('./components/BaseAlert.vue')['default']
     BaseButton: typeof import('./components/BaseButton.vue')['default']
-    BaseDialog: typeof import('./components/BaseDialog.vue')['default']
     BaseSelect: typeof import('./components/BaseSelect.vue')['default']
     MemoForm: typeof import('./components/MemoForm.vue')['default']
     RequiredTextArea: typeof import('./components/RequiredTextArea.vue')['default']

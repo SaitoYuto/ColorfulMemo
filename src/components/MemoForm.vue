@@ -2,11 +2,13 @@
   <v-form ref="memoForm">
     <v-container>
       <RequiredTextField
+        data-testid="title-text-field"
         :bgColor="colorAttr.TEXT_FIELD"
         :label="INTERFACE_LABEL.INPUT.MEMO_TITLE"
         v-model:input="titleInput"
       />
       <RequiredTextArea
+        data-testid="content-text-area"
         :bgColor="colorAttr.TEXT_AREA"
         :label="INTERFACE_LABEL.INPUT.MEMO_CONTENT"
         v-model:input="contentInput"
@@ -14,6 +16,7 @@
     </v-container>
     <v-container class="d-flex justify-space-evenly mx-16">
       <BaseButton
+        data-testid="save-button"
         :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.SAVE"
         :variant="buttonVariant"
@@ -21,6 +24,7 @@
         @click="save"
       />
       <BaseButton
+        data-testid="update-button"
         :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.UPDATE"
         :variant="buttonVariant"
@@ -28,6 +32,7 @@
         @click="update"
       />
       <BaseButton
+        data-testid="delete-button"
         :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.DELETE"
         :variant="buttonVariant"
@@ -35,6 +40,7 @@
         @click="remove"
       />
       <BaseButton
+        data-testid="cancel-button"
         :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.CANCEL"
         :variant="buttonVariant"

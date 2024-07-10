@@ -1,17 +1,17 @@
 <template>
   <v-select
-    :label="props.label"
-    :items="props.items"
-    :item-title="props.itemTitle"
-    :item-value="props.itemTitle"
-    :bg-color="props.bgColor"
-    :return-object="props.returnObject"
+    :label="label"
+    :items="items"
+    :item-title="itemTitle"
+    :item-value="itemTitle"
+    :bg-color="bgColor"
+    :return-object="returnObject"
     v-model="select"
   ></v-select>
 </template>
 
 <script lang="ts" setup>
-const props = defineProps({
+defineProps({
   label: {
     type: String,
     required: true,

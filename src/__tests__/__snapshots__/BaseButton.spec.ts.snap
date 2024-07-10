@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BaseButton.vue > becomes invisible props.isShow when false passed 1`] = `
+"<button type="button" class="v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-tonal" style="display: none;"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span>
+  <!----><span class="v-btn__content" data-no-activator="">Button Text</span>
+  <!---->
+  <!---->
+</button>"
+`;
+
+exports[`BaseButton.vue > renders props.isShow when true passed 1`] = `
+"<button type="button" class="v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-tonal"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span>
+  <!----><span class="v-btn__content" data-no-activator="">Button Text</span>
+  <!---->
+  <!---->
+</button>"
+`;
+
+exports[`BaseButton.vue > renders props.text when an empty string passed 1`] = `
+"<button type="button" class="v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-tonal"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span>
+  <!----><span class="v-btn__content" data-no-activator=""></span>
+  <!---->
+  <!---->
+</button>"
+`;
+
+exports[`BaseButton.vue > renders props.text when passed 1`] = `
+"<button type="button" class="v-btn v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-tonal"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span>
+  <!----><span class="v-btn__content" data-no-activator="">Button Text</span>
+  <!---->
+  <!---->
+</button>"
+`;

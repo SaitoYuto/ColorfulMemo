@@ -3,8 +3,8 @@ import RequiredTextField from "@/components/RequiredTextField.vue";
 import RequiredTextArea from "@/components/RequiredTextArea.vue";
 import { BUTTON_VARIANT } from "@/constants/ButtonVariant";
 import { COLOR_ATTR } from "@/constants/ColorAttr";
-import { memo } from "@/stores/memo";
-import { mount } from "@vue/test-utils";
+import { useMemoStore } from "@/stores/memo";
+import { flushPromises, mount } from "@vue/test-utils";
 import "@/__tests__/setup";
 import { mockRouter } from "@/__tests__/setup";
 import moment from "moment";
@@ -12,11 +12,11 @@ import { MockInstance } from "vitest";
 import { INTERFACE_LABEL } from "@/constants/InterfaceLabel";
 
 describe("MemoForm.vue", () => {
-  let memoStore: ReturnType<typeof memo>;
+  let memoStore: ReturnType<typeof useMemoStore>;
   let routerPushSpy: MockInstance;
 
   beforeEach(() => {
-    memoStore = memo();
+    memoStore = useMemoStore();
     vi.mock("vue-router", () => ({
       useRouter: () => mockRouter,
     }));
@@ -107,8 +107,7 @@ describe("MemoForm.vue", () => {
       .findComponent<typeof RequiredTextArea>("[data-testid=content-text-area]")
       .vm.$emit("update:input", contentValue);
     await wrapper.findComponent("[data-testid=save-button]").trigger("click");
-    const validation = await wrapper.vm.memoForm.validate();
-    expect(validation.valid).toBe(true);
+    await flushPromises();
     expect(addSpy).toHaveBeenCalledTimes(1);
     expect(addSpy).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -138,8 +137,7 @@ describe("MemoForm.vue", () => {
       .findComponent<typeof RequiredTextArea>("[data-testid=content-text-area]")
       .vm.$emit("update:input", contentValue);
     await wrapper.findComponent("[data-testid=save-button]").trigger("click");
-    const validation = await wrapper.vm.memoForm.validate();
-    expect(validation.valid).toBe(false);
+    await flushPromises();
     expect(addSpy).toHaveBeenCalledTimes(0);
     expect(addSpy).not.toHaveBeenCalled();
     expect(routerPushSpy).not.toHaveBeenCalledWith("/");
@@ -171,9 +169,7 @@ describe("MemoForm.vue", () => {
       .findComponent<typeof RequiredTextArea>("[data-testid=content-text-area]")
       .vm.$emit("update:input", contentValue);
     await wrapper.findComponent("[data-testid=update-button]").trigger("click");
-
-    const validation = await wrapper.vm.memoForm.validate();
-    expect(validation.valid).toBe(true);
+    await flushPromises();
     expect(updateSpy).toHaveBeenCalledTimes(1);
     expect(updateSpy).toHaveBeenCalledWith(id, titleValue, contentValue);
     expect(routerPushSpy).toHaveBeenCalledWith("/");
@@ -205,9 +201,7 @@ describe("MemoForm.vue", () => {
       .findComponent<typeof RequiredTextArea>("[data-testid=content-text-area]")
       .vm.$emit("update:input", contentValue);
     await wrapper.findComponent("[data-testid=update-button]").trigger("click");
-
-    const validation = await wrapper.vm.memoForm.validate();
-    expect(validation.valid).toBe(false);
+    await flushPromises();
     expect(updateSpy).toHaveBeenCalledTimes(0);
     expect(updateSpy).not.toHaveBeenCalledWith(id, titleValue, contentValue);
     expect(routerPushSpy).not.toHaveBeenCalledWith("/");
@@ -232,6 +226,7 @@ describe("MemoForm.vue", () => {
     });
 
     await wrapper.findComponent("[data-testid=delete-button]").trigger("click");
+    await flushPromises();
     expect(removeSpy).toHaveBeenCalledTimes(1);
     expect(removeSpy).toHaveBeenCalledWith(id);
     expect(routerPushSpy).toHaveBeenCalledWith("/");

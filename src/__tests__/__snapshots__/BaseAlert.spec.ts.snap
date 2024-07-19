@@ -4,7 +4,7 @@ exports[`BaseAlert.vue > renders props.text when an empty string passed 1`] = `
 "<div class="v-alert v-theme--light v-alert--density-default v-alert--variant-outlined" role="alert">
   <!----><span class="v-alert__underlay"></span>
   <!---->
-  <div class="v-alert__prepend"><i class="mdi-information mdi v-icon notranslate v-theme--light" style="font-size: 28px; height: 28px; width: 28px;" aria-hidden="true" density="default"></i></div>
+  <!---->
   <div class="v-alert__content">
     <!---->
     <!---->
@@ -22,7 +22,7 @@ exports[`BaseAlert.vue > renders props.text when passed 1`] = `
 "<div class="v-alert v-theme--light v-alert--density-default v-alert--variant-outlined" role="alert">
   <!----><span class="v-alert__underlay"></span>
   <!---->
-  <div class="v-alert__prepend"><i class="mdi-information mdi v-icon notranslate v-theme--light" style="font-size: 28px; height: 28px; width: 28px;" aria-hidden="true" density="default"></i></div>
+  <!---->
   <div class="v-alert__content">
     <!---->Alert Text
     <!---->

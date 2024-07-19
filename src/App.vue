@@ -5,8 +5,11 @@
 </template>
 
 <script lang="ts" setup>
-import { setting } from "@/stores/setting";
+import { useSettingStore } from "@/stores/setting";
 import { useTheme } from "vuetify";
 
-useTheme().global.name.value = setting().isLightMode() ? "light" : "dark";
+const settingStore = useSettingStore();
+useTheme().global.name.value = settingStore.getThemeMode(
+  settingStore.getThemeModeCode
+);
 </script>

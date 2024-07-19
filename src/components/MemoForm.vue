@@ -20,7 +20,7 @@
         :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.SAVE"
         :variant="buttonVariant"
-        :isShow="!isEdit()"
+        :visibility="!isEdit()"
         @click="save"
       />
       <BaseButton
@@ -28,7 +28,7 @@
         :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.UPDATE"
         :variant="buttonVariant"
-        :isShow="isEdit()"
+        :visibility="isEdit()"
         @click="update"
       />
       <BaseButton
@@ -36,7 +36,7 @@
         :color="colorAttr.BUTTON"
         :text="INTERFACE_LABEL.BUTTON.DELETE"
         :variant="buttonVariant"
-        :isShow="isEdit()"
+        :visibility="isEdit()"
         @click="remove"
       />
       <BaseButton
@@ -53,30 +53,29 @@
 <script lang="ts" setup>
 import moment from "moment";
 import { INTERFACE_LABEL } from "@/constants/InterfaceLabel";
-import { memo } from "@/stores/memo";
+import { useMemoStore } from "@/stores/memo";
 import type { Memo } from "@/types/Memo";
 import { ButtonVariant } from "@/types/ButtonVariant";
 
 const props = defineProps({
-  id: {
-    type: String,
-    required: false,
-    default: "",
+  buttonVariant: {
+    type: String as PropType<ButtonVariant>,
+    required: true,
   },
   colorAttr: {
     type: Object,
     required: true,
   },
-  buttonVariant: {
-    type: String as PropType<ButtonVariant>,
-    required: true,
+  id: {
+    type: String,
+    default: "",
   },
 });
 
 const router = useRouter();
 const memoForm = ref();
-const memoStore = memo();
-const foundMemo = memoStore.findById(props.id.valueOf());
+const memoStore = useMemoStore();
+const foundMemo = memoStore.findById(props.id);
 
 const titleInput = ref(foundMemo && foundMemo.title ? foundMemo.title : "");
 const contentInput = ref(

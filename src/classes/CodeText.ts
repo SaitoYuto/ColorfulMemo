@@ -11,16 +11,16 @@ export abstract class CodeText<T> {
     this.list.push({ code: code, text: text });
   }
   public getList(): CodeTextPair<T>[] {
-    // リストを汚さないようにDeepCopy
+    // Deep copy not to dirt original list
     return JSON.parse(JSON.stringify(this.list));
   }
 
-  public get(code: T): CodeTextPair<T> | undefined {
-    return this.list.find((set) => set.code == code);
+  public get(code: T): CodeTextPair<T> {
+    return this.list.find((set) => set.code == code)!;
   }
 
-  public getText(code: T): string | undefined {
+  public getText(code: T): string {
     const set = this.get(code);
-    return set ? set.text : undefined;
+    return set.text;
   }
 }

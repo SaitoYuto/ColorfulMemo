@@ -12,9 +12,12 @@
 
 <script lang="ts" setup>
 import { INTERFACE_LABEL } from "@/constants/InterfaceLabel";
-import { setting } from "@/stores/setting";
+import { useSettingStore } from "@/stores/setting";
 
 const id = useRoute("/edit/[id]").params.id;
-const colorAttr = setting().getThemeColorConst;
-const variant = setting().getButtonVariantConst;
+const settingStore = useSettingStore();
+const colorAttr = settingStore.getThemeColorConst(
+  settingStore.getThemeColorCode
+);
+const variant = settingStore.getButtonVariantConst;
 </script>

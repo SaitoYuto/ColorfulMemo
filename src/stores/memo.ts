@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import type { Memo } from "@/types/Memo";
 
-export const memo = defineStore("memo", {
+export const useMemoStore = defineStore("memo", {
   state: () => {
     return {
       memos: [] as Memo[],

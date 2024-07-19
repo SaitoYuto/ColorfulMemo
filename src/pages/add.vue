@@ -8,9 +8,13 @@
 
 <script lang="ts" setup>
 import { INTERFACE_LABEL } from "@/constants/InterfaceLabel";
-import { setting } from "@/stores/setting";
+import { useSettingStore } from "@/stores/setting";
 
-const settingStore = setting();
-const colorAttr = settingStore.getThemeColorConst;
-const variant = settingStore.getButtonVariantConst;
+const settingStore = useSettingStore();
+const colorAttr = settingStore.getThemeColorConst(
+  settingStore.getThemeColorCode
+);
+const variant = settingStore.getButtonVariantConst(
+  settingStore.getButtonVariantCode
+);
 </script>

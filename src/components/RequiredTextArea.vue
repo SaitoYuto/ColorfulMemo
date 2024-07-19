@@ -1,11 +1,11 @@
 <template>
   <v-textarea
-    :bg-color="props.bgColor"
-    :clearable="props.clearable"
-    :label="props.label"
-    :variant="props.variant"
-    :class="props.class"
+    :bg-color="bgColor"
+    :class="$props.class"
+    :clearable="clearable"
+    :label="label"
     :rules="[isRequired]"
+    :variant="variant"
     v-model="input"
   ></v-textarea>
 </template>
@@ -15,30 +15,20 @@ import { MESSAGE } from "@/constants/Message";
 import { TEXTAREA_VARIANT } from "@/constants/TextAreaVariant";
 import type { TextAreaVariant } from "@/types/TextAreaVariant";
 
-const props = defineProps({
-  bgColor: {
+defineProps({
+  bgColor: String,
+  class: {
     type: String,
-    required: false,
-    default: undefined,
+    default: "mt-4",
   },
   clearable: {
     type: Boolean,
-    required: false,
     default: true,
   },
-  label: {
-    type: String,
-    required: false,
-  },
+  label: String,
   variant: {
     type: String as PropType<TextAreaVariant>,
-    required: false,
     default: TEXTAREA_VARIANT.OUTLINED,
-  },
-  class: {
-    type: String,
-    required: false,
-    default: "mt-4",
   },
 });
 

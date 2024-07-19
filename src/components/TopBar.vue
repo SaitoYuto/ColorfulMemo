@@ -1,11 +1,14 @@
 <template>
   <v-app-bar :color="colorAttr.BAR">
-    <v-app-bar-title text="Colorful Memo" />
+    <v-app-bar-title :text="INTERFACE_LABEL.COMMON.TITLE" />
   </v-app-bar>
 </template>
 
 <script lang="ts" setup>
-import { setting } from "@/stores/setting";
+import { useSettingStore } from "@/stores/setting";
+import { INTERFACE_LABEL } from "@/constants/InterfaceLabel";
 
-const colorAttr = setting().getThemeColorConst;
+const colorAttr = useSettingStore().getThemeColorConst(
+  useSettingStore().getThemeColorCode
+);
 </script>

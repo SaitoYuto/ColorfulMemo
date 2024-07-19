@@ -1,13 +1,13 @@
 <template>
   <v-text-field
-    :bg-color="props.bgColor"
-    :clearable="props.clearable"
-    :label="props.label"
-    :variant="props.variant"
-    :rows="props.rows"
-    :class="props.class"
-    v-model="input"
+    :bg-color="bgColor"
+    :class="$props.class"
+    :clearable="clearable"
+    :label="label"
+    :rows="rows"
     :rules="[isRequired]"
+    :variant="variant"
+    v-model="input"
   ></v-text-field>
 </template>
 
@@ -16,34 +16,23 @@ import { MESSAGE } from "@/constants/Message";
 import { TEXTFIELD_VARIANT } from "@/constants/TextFieldVariant";
 import type { TextFieldVariant } from "@/types/TextFieldVariant";
 
-const props = defineProps({
-  bgColor: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
+defineProps({
+  bgColor: String,
   clearable: {
     type: Boolean,
-    required: false,
     default: true,
   },
-  label: {
-    type: String,
-    required: false,
-  },
+  label: String,
   variant: {
     type: String as PropType<TextFieldVariant>,
-    required: false,
     default: TEXTFIELD_VARIANT.OUTLINED,
   },
   rows: {
     type: String,
-    required: false,
     default: "1",
   },
   class: {
     type: String,
-    required: false,
     default: "mt-4",
   },
 });

@@ -16,7 +16,11 @@ export abstract class CodeText<T> {
   }
 
   public get(code: T): CodeTextPair<T> {
-    return this.list.find((set) => set.code == code)!;
+    const pair = this.list.find((set) => set.code == code);
+    if (!pair) {
+      throw new Error(`Item with code ${code} not found`);
+    }
+    return pair;
   }
 
   public getText(code: T): string {

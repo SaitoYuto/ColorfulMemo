@@ -1,10 +1,10 @@
 <template>
   <v-select
-    :label="label"
+    :bg-color="bgColor"
     :items="items"
     :item-title="itemTitle"
     :item-value="itemTitle"
-    :bg-color="bgColor"
+    :label="label"
     :return-object="returnObject"
     v-model="select"
   ></v-select>
@@ -12,9 +12,10 @@
 
 <script lang="ts" setup>
 defineProps({
-  label: {
+  bgColor: {
     type: String,
-    required: true,
+    required: false,
+    default: undefined,
   },
   items: {
     type: Array,
@@ -30,10 +31,9 @@ defineProps({
     required: false,
     default: "code",
   },
-  bgColor: {
+  label: {
     type: String,
-    required: false,
-    default: undefined,
+    required: true,
   },
   returnObject: {
     type: Boolean,

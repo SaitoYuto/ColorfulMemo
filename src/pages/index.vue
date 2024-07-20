@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-label :text="INTERFACE_LABEL.PAGES.HOME" />
-    <v-divider :color="colorConst.DIVIDER" :thickness="3" />
+    <v-divider :color="colorConst.DIVIDER" thickness="3" />
     <v-container>
       <v-list v-for="memo in memoStore.getMemos" :key="memo.id" lines="two">
         <v-label>{{ getDateLabel(memo.dateTime) }}</v-label>
@@ -25,24 +25,32 @@
 
 <script lang="ts" setup>
 import { INTERFACE_LABEL } from "@/constants/InterfaceLabel";
-import { memo } from "@/stores/memo";
-import { setting } from "@/stores/setting";
+import { useMemoStore } from "@/stores/memo";
+import { useSettingStore } from "@/stores/setting";
 import moment from "moment";
 
-const memoStore = memo();
-const colorConst = setting().getThemeColorConst;
+const memoStore = useMemoStore();
+const settingStore = useSettingStore();
+const colorConst = settingStore.getThemeColorConst(
+  settingStore.getThemeColorCode
+);
 
+/**
+ * get time frame label depends on current time
+ *
+ * @param dateTime
+ */
 function getDateLabel(dateTime: string): string {
   const memoMoment = moment(dateTime);
   const todayMoment = moment();
   if (memoMoment.format("YYYY/MM/DD") == todayMoment.format("YYYY/MM/DD")) {
-    return "Today";
+    return INTERFACE_LABEL.TIME_FRAME.TODAY;
   } else if (todayMoment.subtract(1, "w").isBefore(memoMoment)) {
-    return "Last Week";
+    return INTERFACE_LABEL.TIME_FRAME.LAST_WEEK;
   } else if (todayMoment.subtract(30, "d").isBefore(memoMoment)) {
-    return "Last 30 days";
+    return INTERFACE_LABEL.TIME_FRAME.LAST_MONTH;
   } else {
-    return "More than 30 days";
+    return INTERFACE_LABEL.TIME_FRAME.MORE_THAN_MONTH;
   }
 }
 </script>

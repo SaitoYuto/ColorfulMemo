@@ -8,9 +8,8 @@ export const INTERFACE_LABEL = {
     SAVE: "Save",
     UPDATE: "Update",
   } as const,
-  DIALOG: {
-    CLOSE: "Close",
-    TITLE: "MemoPad",
+  COMMON: {
+    TITLE: "Colorful Memo",
   } as const,
   INPUT: {
     MEMO_CONTENT: "*Content",
@@ -26,5 +25,11 @@ export const INTERFACE_LABEL = {
     COLOR: "Theme Color",
     MODE: "Theme Mode",
     BUTTON: "Button Variant",
+  } as const,
+  TIME_FRAME: {
+    TODAY: "Today",
+    LAST_WEEK: "Last Week",
+    LAST_MONTH: "Last Month",
+    MORE_THAN_MONTH: "More than 30 days",
   } as const,
 } as const;

@@ -26,13 +26,13 @@ describe("BaseButton.vue", () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it("renders props.isShow when true passed", async () => {
+  it("renders props.visibility when true passed", async () => {
     const text = "Button Text";
-    const isShow = true;
+    const visible = true;
     const wrapper = mount(BaseButton, {
       props: {
         text: text,
-        isShow: isShow,
+        visibility: visible,
       },
     });
     expect(wrapper.exists()).toBe(true);
@@ -40,13 +40,13 @@ describe("BaseButton.vue", () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it("becomes invisible props.isShow when false passed", async () => {
+  it("becomes invisible props.visibility when false passed", async () => {
     const text = "Button Text";
-    const isNotShow = false;
+    const invisible = false;
     const wrapper = mount(BaseButton, {
       props: {
         text: text,
-        isShow: isNotShow,
+        visibility: invisible,
       },
     });
     expect(wrapper.exists()).toBe(true);

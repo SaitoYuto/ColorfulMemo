@@ -19,5 +19,7 @@ const settingStore = useSettingStore();
 const colorAttr = settingStore.getThemeColorConst(
   settingStore.getThemeColorCode
 );
-const variant = settingStore.getButtonVariantConst;
+const variant = settingStore.getButtonVariantConst(
+  settingStore.getButtonVariantCode
+);
 </script>

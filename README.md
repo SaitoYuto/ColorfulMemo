@@ -1,23 +1,45 @@
 # Colorful Memo
 
-![Colorful Memo](./README/images/logo.png)
-
----
-
-![Light & Blue](./README/images/Light&Blue.png)
-
----
-
-![Dark & Yellow](./README/images/Dark&Yellow.png)
-
----
-
-![Light & Green](./README/images/Light&Green.png)
+<p align="center">
+    <img src="./README/images/logo.png" width="150" height="150">
+</p>
 
 ## Description
 
-The Colorful Memo is a simple single page application, using local storage for storing memos.  
-This application allows users to select theme mode, color and component design.
+Colorful Memo is a simple single page application for taking memo.
+This application allows users to select theme mode, color and button design.
+
+---
+
+## UI
+
+### Home with Memo
+
+![Home with Memo](./README/images/Light&Default.png)
+
+---
+
+### Home without Memo
+
+![Home without Memo](./README/images/Dark&Red.png)
+
+---
+
+### Adding Memo
+
+![Adding Memo](./README/images/Light&Blue.png)
+
+---
+
+### Editing Memo
+
+![Editing Memo](./README/images/Dark&Yellow.png)
+
+---
+
+### Setting
+
+![Setting](./README/images/Light&Green.png)
 
 ## Theme
 
@@ -26,6 +48,7 @@ This application allows users to select theme mode, color and component design.
 
 ## Color
 
+- Default (Gray)
 - Blue
 - Red
 - Yellow

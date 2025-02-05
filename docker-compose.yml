@@ -1,0 +1,5 @@
+services:
+  colorful-memo:
+    build: .
+    ports:
+      - "8080:80"
